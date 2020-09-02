@@ -1,0 +1,104 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link href='https://fonts.googleapis.com/css?family=Ro' rel='stylesheet'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="ToDoList.css">
+
+</script>
+<title>To-Do List</title>
+</head>
+
+
+<body>
+<div id="icons">
+
+
+
+
+</div>
+
+<div id = "container1">
+<h1 class="h11"> To-Do List <i class="far fa-plus-square"></i> </h1>
+<input type="text" placeholder="Add new To-Do" class="inputt"></input>
+<ul>
+  <li><span>X</span> Go To The Gym</li>
+    <li> <span>X</span> Read Books </li>
+      <li><span>X</span> Sleep Early</li>
+        <li><span>X</span> Wake Up Early</li>
+</ul>
+
+
+</div>
+
+
+  <script>
+var ishidden = true;
+$(".far").click(function()
+{
+  if (ishidden) {
+  $("input[type = 'text']").css("display" , "block");
+  ishidden  = false;
+   }
+   else {
+     $("input[type = 'text']").css("display" , "none");
+     ishidden  = true;
+   }
+})
+*
+
+  $("ul").on("click","li",function(){
+    $(this).toggleClass("completed");
+  });
+
+  $("ul").on("click","span" , function(event){
+  $(this).parent().fadeOut(300 , function(){
+  $(this).remove();
+
+  });
+  event.stopPropagation();
+ });
+
+ $('input[type ="text"]').keypress(function(event)
+{
+  if (event.which === 13)
+  {
+    var newtodo = $(this).val();
+    if (newtodo == "")
+    {
+      alert(' Its Empty ^^" ')
+    }
+    else {
+      $(this).val("");
+      $('ul').append("<li> <span>X</span> "+ newtodo +  "</li>");
+    }
+
+  };
+})
+
+
+
+ /*var isdone = true;
+$(".li1").click(function(){
+if(isdone)
+{
+$(this).css("color","grey");
+$(this).css("text-decoration","line-through");
+isdone = false;
+}
+else {
+  $(this).css("color","black");
+  $(this).css("text-decoration","none");
+  isdone = true;
+}
+
+});
+*/
+
+
+  </script>
+
+</body>
+
+</html>
